@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>osu! Rhythm Game</title>
+    <link rel="stylesheet" href="osu.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- Song Selection Screen -->
+        <div id="song-select" class="overlay">
+            <div class="song-select-content">
+                <h1>Select a Song</h1>
+                <div id="beatmap-list" class="beatmap-list">
+                    <!-- Beatmap cards will be inserted here dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Difficulty Selection Menu -->
+        <div id="menu" class="overlay hidden">
+            <div class="menu-content">
+                <h1 id="menu-title">Song Title</h1>
+                <p class="artist" id="menu-artist">by Artist</p>
+                <div id="difficulty-buttons" class="difficulty-buttons">
+                    <!-- Difficulty buttons will be inserted here dynamically -->
+                </div>
+                <p class="hint">Click a difficulty to start!</p>
+                <button id="btn-back-to-songs" class="back-btn">Back to Song Select</button>
+            </div>
+        </div>
+
+        <!-- Loading Screen -->
+        <div id="loading" class="overlay hidden">
+            <div class="loading-content">
+                <p>Loading...</p>
+                <div class="loading-bar">
+                    <div class="loading-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Countdown Overlay -->
+        <div id="countdown" class="overlay hidden">
+            <div class="countdown-number">3</div>
+        </div>
+
+        <!-- Pause Menu -->
+        <div id="pause" class="overlay hidden">
+            <div class="pause-content">
+                <h2>Paused</h2>
+                <button id="btn-resume">Resume</button>
+                <button id="btn-retry">Retry</button>
+                <button id="btn-quit">Quit</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results" class="overlay hidden">
+            <div class="results-content">
+                <div id="grade-display"></div>
+                <div class="stats">
+                    <div class="stat-row">
+                        <span class="label">Score</span>
+                        <span id="result-score" class="value">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="label">Accuracy</span>
+                        <span id="result-accuracy" class="value">0.00%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="label">Max Combo</span>
+                        <span id="result-combo" class="value">0x</span>
+                    </div>
+                    <div class="hit-breakdown">
+                        <div class="hit-stat hit300">
+                            <span class="count" id="result-300">0</span>
+                            <span class="label">300</span>
+                        </div>
+                        <div class="hit-stat hit100">
+                            <span class="count" id="result-100">0</span>
+                            <span class="label">100</span>
+                        </div>
+                        <div class="hit-stat hit50">
+                            <span class="count" id="result-50">0</span>
+                            <span class="label">50</span>
+                        </div>
+                        <div class="hit-stat miss">
+                            <span class="count" id="result-miss">0</span>
+                            <span class="label">Miss</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="btn-continue">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="osu-parser.js"></script>
+    <script src="osu-data.js"></script>
+    <script src="osu-game.js"></script>
+</body>
+</html>

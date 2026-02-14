@@ -1,0 +1,12 @@
+{
+    "display_name": "osu! Rhythm Game",
+    "loading_order": 1,
+    "requires": [],
+    "optional": [],
+    "js": "osu-integration.js",
+    "css": "",
+    "author": "Claude",
+    "version": "1.0.0",
+    "homePage": "",
+    "auto_update": false
+}

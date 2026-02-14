@@ -1,0 +1,660 @@
+{
+  "beatmaps": [
+    {
+      "id": "flutterwonder",
+      "title": "Flutterwonder",
+      "artist": "PinkiePieSwear",
+      "creator": "MoonShade",
+      "basePath": "Osu/Flutterwonder/",
+      "audioFile": "PinkiePieSwear - Flutterwonder.mp3",
+      "background": "flutterwonder.jpg",
+      "difficulties": [
+        {
+          "id": "easy",
+          "name": "Easy",
+          "file": "PinkiePieSwear - Flutterwonder (MoonShade) [Easy].osu",
+          "stars": 1,
+          "color": "#4ade80"
+        },
+        {
+          "id": "normal",
+          "name": "Normal",
+          "file": "PinkiePieSwear - Flutterwonder (MoonShade) [Normal].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "ztrots-wonders",
+          "name": "ztrot's Wonders",
+          "file": "PinkiePieSwear - Flutterwonder (MoonShade) [ztrot's Wonders].osu",
+          "stars": 3,
+          "color": "#c084fc"
+        },
+        {
+          "id": "insane",
+          "name": "Insane",
+          "file": "PinkiePieSwear - Flutterwonder (MoonShade) [Insane].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    {
+      "id": "winter-wrap-up",
+      "title": "Winter Wrap Up",
+      "artist": "Daniel Ingram",
+      "creator": "Odaril",
+      "basePath": "Osu/Daniel Ingram - Winter Wrap Up/",
+      "audioFile": "Winter_Wrap_Up.mp3",
+      "background": "background.png",
+      "difficulties": [
+        {
+          "id": "normal",
+          "name": "Normal",
+          "file": "Daniel Ingram - Winter Wrap Up (Odaril) [Normal].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "hard",
+          "name": "Hard",
+          "file": "Daniel Ingram - Winter Wrap Up (Odaril) [Hard].osu",
+          "stars": 3,
+          "color": "#c084fc"
+        },
+        {
+          "id": "insane",
+          "name": "Insane",
+          "file": "Daniel Ingram - Winter Wrap Up (Odaril) [Insane].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    {
+      "id": "a-true-true-friend",
+      "title": "A True, True Friend",
+      "artist": "Daniel Ingram",
+      "creator": "ztrot",
+      "basePath": "Osu/Daniel Ingram - A True, True Friend/",
+      "audioFile": "A True, True Friend.mp3",
+      "background": "BG.png",
+      "difficulties": [
+        {
+          "id": "ai-s-normal",
+          "name": "Ai's Normal",
+          "file": "Daniel Ingram - A True, True Friend (ztrot) [Ai's Normal].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "hard",
+          "name": "Hard",
+          "file": "Daniel Ingram - A True, True Friend (ztrot) [Hard].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "insane",
+          "name": "Insane",
+          "file": "Daniel Ingram - A True, True Friend (ztrot) [Insane].osu",
+          "stars": 5,
+          "color": "#ef4444"
+        }
+      ]
+    },
+    {
+      "id": "raise-this-barn-remix",
+      "title": "Raise This Barn (Remix)",
+      "artist": "Sim Gretina",
+      "creator": "ztrot",
+      "basePath": "Osu/Sim Gretina - Raise This Barn (Remix)/",
+      "audioFile": "Raise This Barn (Sim Gretina Remix).mp3",
+      "background": "applejack_pixels_by_shelltoontv-d51omm0.jpg",
+      "difficulties": [
+        {
+          "id": "easy",
+          "name": "Easy",
+          "file": "Sim Gretina - Raise This Barn (Remix) (ztrot) [Easy].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "vinyldash-s-normal",
+          "name": "VinylDash's Normal",
+          "file": "Sim Gretina - Raise This Barn (Remix) (ztrot) [VinylDash's Normal].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "insane",
+          "name": "Insane",
+          "file": "Sim Gretina - Raise This Barn (Remix) (ztrot) [Insane].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "tvo-s-hard",
+          "name": "TVO's Hard",
+          "file": "Sim Gretina - Raise This Barn (Remix) (ztrot) [TVO's Hard].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    {
+      "id": "becoming-popular",
+      "title": "Becoming Popular",
+      "artist": "Daniel Ingram",
+      "creator": "CDFA",
+      "basePath": "Osu/Daniel Ingram - Becoming Popular/",
+      "audioFile": "Daniel Ingram - Becoming Popular.mp3",
+      "background": "Rarity.jpg",
+      "difficulties": [
+        {
+          "id": "easy",
+          "name": "Easy",
+          "file": "Daniel Ingram - Becoming Popular (CDFA) [Easy].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "normal",
+          "name": "Normal",
+          "file": "Daniel Ingram - Becoming Popular (CDFA) [Normal].osu",
+          "stars": 3,
+          "color": "#c084fc"
+        },
+        {
+          "id": "hard",
+          "name": "Hard",
+          "file": "Daniel Ingram - Becoming Popular (CDFA) [Hard].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "insane",
+          "name": "Insane",
+          "file": "Daniel Ingram - Becoming Popular (CDFA) [Insane].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    {
+      "id": "babs-seed",
+      "title": "Babs Seed",
+      "artist": "Daniel Ingram",
+      "creator": "CDFA",
+      "basePath": "Osu/Daniel Ingram - Babs Seed/",
+      "audioFile": "CMC - Babs Seed.mp3",
+      "background": "BetterFilename.png.jpg",
+      "difficulties": [
+        {
+          "id": "vinyldash-s-easy",
+          "name": "VinylDash's Easy",
+          "file": "Daniel Ingram - Babs Seed (CDFA) [VinylDash's Easy].osu",
+          "stars": 1,
+          "color": "#4ade80"
+        },
+        {
+          "id": "normal",
+          "name": "Normal",
+          "file": "Daniel Ingram - Babs Seed (CDFA) [Normal].osu",
+          "stars": 3,
+          "color": "#c084fc"
+        },
+        {
+          "id": "insane",
+          "name": "Insane",
+          "file": "Daniel Ingram - Babs Seed (CDFA) [Insane].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "wa-s-hard",
+          "name": "wa's Hard",
+          "file": "Daniel Ingram - Babs Seed (CDFA) [wa's Hard].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "ztrony",
+          "name": "ztrony",
+          "file": "Daniel Ingram - Babs Seed (CDFA) [ztrony].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    {
+      "id": "what-my-cutie-mark-is-telling-me-remix",
+      "title": "What My Cutie Mark Is Telling Me (Remix)",
+      "artist": "Sim Gretina",
+      "creator": "ztrot",
+      "basePath": "Osu/Sim Gretina - What My Cutie Mark Is Telling Me (Remix)/",
+      "audioFile": "What my cutie mark is telling me.mp3",
+      "background": "mane_6_with_cutie_marks_by_luther38-d4xjud5.png",
+      "difficulties": [
+        {
+          "id": "normal",
+          "name": "Normal",
+          "file": "Sim Gretina - What My Cutie Mark Is Telling Me (Remix) (ztrot) [Normal].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "cdfa-s-hard",
+          "name": "CDFA's Hard",
+          "file": "Sim Gretina - What My Cutie Mark Is Telling Me (Remix) (ztrot) [CDFA's Hard].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "insane",
+          "name": "Insane",
+          "file": "Sim Gretina - What My Cutie Mark Is Telling Me (Remix) (ztrot) [Insane].osu",
+          "stars": 5,
+          "color": "#ef4444"
+        }
+      ]
+    },
+    {
+      "id": "the-gypsy-bard",
+      "title": "The Gypsy Bard",
+      "artist": "Jenny Nicholson",
+      "creator": "Rainmon",
+      "basePath": "Osu/Jenny Nicholson - The Gypsy Bard/",
+      "audioFile": "Gypsy.mp3",
+      "background": "BGBGBGBG.png",
+      "difficulties": [
+        {
+          "id": "easy",
+          "name": "Easy",
+          "file": "Jenny Nicholson - The Gypsy Bard (Rainmon) [Easy].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "ztrot-s-normal",
+          "name": "ztrot's Normal",
+          "file": "Jenny Nicholson - The Gypsy Bard (Rainmon) [ztrot's Normal].osu",
+          "stars": 3,
+          "color": "#c084fc"
+        },
+        {
+          "id": "hard",
+          "name": "Hard",
+          "file": "Jenny Nicholson - The Gypsy Bard (Rainmon) [Hard].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "insane",
+          "name": "Insane",
+          "file": "Jenny Nicholson - The Gypsy Bard (Rainmon) [Insane].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    {
+      "id": "party-with-pinkie",
+      "title": "Party With Pinkie",
+      "artist": "Alex S.",
+      "creator": "ztrot",
+      "basePath": "Osu/Alex S. - Party With Pinkie/",
+      "audioFile": "PartyWithPinkie.mp3",
+      "background": "PartyWithPinkie.png",
+      "difficulties": [
+        {
+          "id": "light",
+          "name": "Light",
+          "file": "Alex S. - Party With Pinkie (ztrot) [Light].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "ygokid8-s-normal",
+          "name": "YGOkid8's Normal",
+          "file": "Alex S. - Party With Pinkie (ztrot) [YGOkid8's Normal].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "collab",
+          "name": "Collab",
+          "file": "Alex S. - Party With Pinkie (ztrot) [Collab].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "gladi-s-hard",
+          "name": "Gladi's Hard",
+          "file": "Alex S. - Party With Pinkie (ztrot) [Gladi's Hard].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    {
+      "id": "hearts-as-strong-as-horses",
+      "title": "Hearts as Strong as Horses",
+      "artist": "Daniel Ingram",
+      "creator": "diraimur",
+      "basePath": "Osu/Daniel Ingram - Hearts as Strong as Horses/",
+      "audioFile": "hasah.mp3",
+      "background": "icanteven.png",
+      "difficulties": [
+        {
+          "id": "easy",
+          "name": "Easy",
+          "file": "Daniel Ingram - Hearts as Strong as Horses (diraimur) [Easy].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "yuii-s-normal",
+          "name": "Yuii-'s Normal",
+          "file": "Daniel Ingram - Hearts as Strong as Horses (diraimur) [Yuii-'s Normal].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "firmatorenio-s-advanced",
+          "name": "Firmatorenio's Advanced",
+          "file": "Daniel Ingram - Hearts as Strong as Horses (diraimur) [Firmatorenio's Advanced].osu",
+          "stars": 3,
+          "color": "#c084fc"
+        },
+        {
+          "id": "arphimigon-s-for-the-win",
+          "name": "Arphimigon's For The Win!",
+          "file": "Daniel Ingram - Hearts as Strong as Horses (diraimur) [Arphimigon's For The Win!].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "hard",
+          "name": "Hard",
+          "file": "Daniel Ingram - Hearts as Strong as Horses (diraimur) [Hard].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "voli-s-very-hard",
+          "name": "Voli's Very Hard",
+          "file": "Daniel Ingram - Hearts as Strong as Horses (diraimur) [Voli's Very Hard].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "gero-s-insane",
+          "name": "Gero's Insane",
+          "file": "Daniel Ingram - Hearts as Strong as Horses (diraimur) [Gero's Insane].osu",
+          "stars": 5,
+          "color": "#ef4444"
+        }
+      ]
+    },
+    {
+      "id": "pinkie-the-party-planner",
+      "title": "Pinkie the Party Planner",
+      "artist": "Daniel Ingram",
+      "creator": "Don",
+      "basePath": "Osu/Daniel Ingram - Pinkie the Party Planner/",
+      "audioFile": "Pinkie the Party Planner.mp3",
+      "background": "Background.jpg",
+      "difficulties": [
+        {
+          "id": "starger-s-easy",
+          "name": "Starger's Easy",
+          "file": "Daniel Ingram - Pinkie the Party Planner (Don) [Starger's Easy].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "normal",
+          "name": "Normal",
+          "file": "Daniel Ingram - Pinkie the Party Planner (Don) [Normal].osu",
+          "stars": 3,
+          "color": "#c084fc"
+        },
+        {
+          "id": "hard",
+          "name": "Hard",
+          "file": "Daniel Ingram - Pinkie the Party Planner (Don) [Hard].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    {
+      "id": "metal-version-galiant609",
+      "title": "Metal Version (galiant609)",
+      "artist": "MLP This Day Aria",
+      "creator": "Warrarytas",
+      "basePath": "Osu/MLP This Day Aria - Metal Version (galiant609)/",
+      "audioFile": "This Day Aria METAL SONG.mp3",
+      "background": "Easy.jpg",
+      "difficulties": [
+        {
+          "id": "cadance",
+          "name": "Cadance",
+          "file": "MLP This Day Aria - Metal Version (galiant609) (Warrarytas) [Cadance].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "chrysalis",
+          "name": "Chrysalis",
+          "file": "MLP This Day Aria - Metal Version (galiant609) (Warrarytas) [Chrysalis].osu",
+          "stars": 3,
+          "color": "#c084fc"
+        },
+        {
+          "id": "shining-armor",
+          "name": "Shining Armor",
+          "file": "MLP This Day Aria - Metal Version (galiant609) (Warrarytas) [Shining Armor].osu",
+          "stars": 3,
+          "color": "#c084fc"
+        },
+        {
+          "id": "canterlot",
+          "name": "Canterlot",
+          "file": "MLP This Day Aria - Metal Version (galiant609) (Warrarytas) [Canterlot].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    {
+      "id": "mane-power",
+      "title": "Mane Power",
+      "artist": "Tridashie",
+      "creator": "Dika312",
+      "basePath": "Osu/Tridashie - Mane Power/",
+      "audioFile": "audio.mp3",
+      "background": "bg.png",
+      "difficulties": [
+        {
+          "id": "low-power",
+          "name": "Low Power",
+          "file": "Tridashie - Mane Power (Dika312) [Low Power].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "medium-power",
+          "name": "Medium Power",
+          "file": "Tridashie - Mane Power (Dika312) [Medium Power].osu",
+          "stars": 3,
+          "color": "#c084fc"
+        },
+        {
+          "id": "high-power",
+          "name": "High Power",
+          "file": "Tridashie - Mane Power (Dika312) [High Power].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    {
+      "id": "a-tropical-octav3",
+      "title": "A Tropical Octav3",
+      "artist": "Coconeru & Steven, A.D.",
+      "creator": "Peyturtle",
+      "basePath": "Osu/Coconeru & Steven, A.D. - A Tropical Octav3/",
+      "audioFile": "audio.mp3",
+      "background": "bg.jpg",
+      "difficulties": [
+        {
+          "id": "easy",
+          "name": "Easy",
+          "file": "Coconeru & Steven, A.D. - A Tropical Octav3 (Peyturtle) [Easy].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "insane",
+          "name": "Insane",
+          "file": "Coconeru & Steven, A.D. - A Tropical Octav3 (Peyturtle) [Insane].osu",
+          "stars": 5,
+          "color": "#ef4444"
+        },
+        {
+          "id": "lost-at-sea",
+          "name": "Lost at Sea",
+          "file": "Coconeru & Steven, A.D. - A Tropical Octav3 (Peyturtle) [Lost at Sea].osu",
+          "stars": 5,
+          "color": "#ef4444"
+        }
+      ]
+    },
+    {
+      "id": "discord-short-ver",
+      "title": "Discord (Short Ver.)",
+      "artist": "The Living Tombstone",
+      "creator": "pushi09",
+      "basePath": "Osu/The Living Tombstone - Discord (Short Ver.)/",
+      "audioFile": "audio.mp3",
+      "background": "discord.jpg",
+      "difficulties": [
+        {
+          "id": "normal",
+          "name": "Normal",
+          "file": "The Living Tombstone - Discord (Short Ver.) (pushi09) [Normal].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "advanced",
+          "name": "Advanced",
+          "file": "The Living Tombstone - Discord (Short Ver.) (pushi09) [Advanced].osu",
+          "stars": 3,
+          "color": "#c084fc"
+        },
+        {
+          "id": "insane",
+          "name": "Insane",
+          "file": "The Living Tombstone - Discord (Short Ver.) (pushi09) [Insane].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "light-insane",
+          "name": "Light Insane",
+          "file": "The Living Tombstone - Discord (Short Ver.) (pushi09) [Light Insane].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "expert",
+          "name": "Expert",
+          "file": "The Living Tombstone - Discord (Short Ver.) (pushi09) [Expert].osu",
+          "stars": 5,
+          "color": "#ef4444"
+        }
+      ]
+    },
+    {
+      "id": "time-to-be-awesome",
+      "title": "Time to be awesome",
+      "artist": "Daniel Ingram",
+      "creator": "Dalexsh",
+      "basePath": "Osu/Daniel Ingram - Time to be awesome/",
+      "audioFile": "audio.mp3",
+      "background": "background.jpg",
+      "difficulties": [
+        {
+          "id": "easy",
+          "name": "Easy",
+          "file": "Daniel Ingram - Time to be awesome (Dalexsh) [Easy].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "advanced",
+          "name": "Advanced",
+          "file": "Daniel Ingram - Time to be awesome (Dalexsh) [Advanced].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "hard",
+          "name": "Hard",
+          "file": "Daniel Ingram - Time to be awesome (Dalexsh) [Hard].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "normal",
+          "name": "Normal",
+          "file": "Daniel Ingram - Time to be awesome (Dalexsh) [Normal].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        }
+      ]
+    },
+    {
+      "id": "changeling",
+      "title": "Changeling",
+      "artist": "All Levels at Once",
+      "creator": "ztrot",
+      "basePath": "Osu/All Levels at Once - Changeling/",
+      "audioFile": "Changeling.mp3",
+      "background": "redirect.jpg",
+      "difficulties": [
+        {
+          "id": "normal",
+          "name": "Normal",
+          "file": "All Levels at Once - Changeling (ztrot) [Normal].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "stefan-s-easy",
+          "name": "Stefan's Easy",
+          "file": "All Levels at Once - Changeling (ztrot) [Stefan's Easy].osu",
+          "stars": 2,
+          "color": "#60a5fa"
+        },
+        {
+          "id": "hard",
+          "name": "Hard",
+          "file": "All Levels at Once - Changeling (ztrot) [Hard].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        },
+        {
+          "id": "insane",
+          "name": "Insane",
+          "file": "All Levels at Once - Changeling (ztrot) [Insane].osu",
+          "stars": 4,
+          "color": "#f472b6"
+        }
+      ]
+    }
+  ]
+}
