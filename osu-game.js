@@ -66,6 +66,7 @@ class OsuGame {
         this.cursorX = 0;
         this.cursorY = 0;
         this.lastTouchTime = 0;
+        this.touchActiveCount = 0;
 
         // Mouse/key state for sliders
         this.mouseDown = false;
@@ -427,7 +428,14 @@ class OsuGame {
         // osu! playfield is 512x384. Use adaptive padding so mobile screens
         // don't lose too much playable area to fixed margins.
         const minDimension = Math.max(1, Math.min(this.gameWidth, this.gameHeight));
-        const padding = Math.max(10, Math.min(50, Math.round(minDimension * 0.06)));
+        const compactViewport = Math.max(this.gameWidth, this.gameHeight) <= 1200 || minDimension <= 820;
+        const portraitViewport = this.gameHeight >= this.gameWidth;
+        const paddingRatio = compactViewport
+            ? (portraitViewport ? 0.015 : 0.025)
+            : 0.06;
+        const minPadding = compactViewport ? 4 : 10;
+        const maxPadding = compactViewport ? 24 : 50;
+        const padding = Math.max(minPadding, Math.min(maxPadding, Math.round(minDimension * paddingRatio)));
         const availableWidth = Math.max(1, this.gameWidth - padding * 2);
         const availableHeight = Math.max(1, this.gameHeight - padding * 2);
 
@@ -487,13 +495,20 @@ class OsuGame {
         this.canvas.addEventListener('touchstart', (e) => {
             e.preventDefault();
             this.lastTouchTime = Date.now();
+            this.touchActiveCount = e.touches.length;
             this.mouseDown = true;
+            if (e.touches.length > 0) {
+                const rect = this.canvas.getBoundingClientRect();
+                this.cursorX = e.touches[0].clientX - rect.left;
+                this.cursorY = e.touches[0].clientY - rect.top;
+            }
             for (const touch of e.touches) {
                 this.handleTouch(touch);
             }
         }, { passive: false });
         this.canvas.addEventListener('touchend', (e) => {
             this.lastTouchTime = Date.now();
+            this.touchActiveCount = e.touches.length;
             this.mouseDown = e.touches.length > 0;
             if (e.touches.length > 0) {
                 const rect = this.canvas.getBoundingClientRect();
@@ -503,6 +518,7 @@ class OsuGame {
         }, { passive: false });
         this.canvas.addEventListener('touchcancel', (e) => {
             this.lastTouchTime = Date.now();
+            this.touchActiveCount = e.touches.length;
             this.mouseDown = e.touches.length > 0;
         }, { passive: false });
 
@@ -515,6 +531,7 @@ class OsuGame {
         this.canvas.addEventListener('touchmove', (e) => {
             e.preventDefault();
             this.lastTouchTime = Date.now();
+            this.touchActiveCount = e.touches.length;
             if (e.touches.length > 0) {
                 const rect = this.canvas.getBoundingClientRect();
                 this.cursorX = e.touches[0].clientX - rect.left;
@@ -543,6 +560,8 @@ class OsuGame {
         const rect = this.canvas.getBoundingClientRect();
         const x = touch.clientX - rect.left;
         const y = touch.clientY - rect.top;
+        this.cursorX = x;
+        this.cursorY = y;
 
         this.processHitAtPosition(x, y);
     }
@@ -575,6 +594,10 @@ class OsuGame {
 
     isHoldingInput() {
         return this.mouseDown || this.keyDown;
+    }
+
+    isTouchInputActive() {
+        return this.touchActiveCount > 0;
     }
 
     removeActiveObject(hitObject) {
@@ -629,7 +652,7 @@ class OsuGame {
                 // Handle differently for circles vs sliders
                 if (obj.type === 'slider') {
                     // Start slider tracking
-                    this.startSlider(obj, hitValue);
+                    this.startSlider(obj, hitValue, currentTime);
                 } else {
                     // Circle hit
                     if (hitValue === 300) obj.state = HitState.HIT_300;
@@ -645,11 +668,12 @@ class OsuGame {
     /**
      * Start tracking a slider
      */
-    startSlider(slider, startHitValue) {
+    startSlider(slider, startHitValue, currentTime) {
         slider.state = HitState.SLIDING;
         slider.tracking = true;
         slider.trackingBroken = false;
         slider.startHitValue = startHitValue;
+        slider.trackingGraceEndTime = currentTime + (this.isTouchInputActive() ? 180 : 80);
 
         // Award initial hit score (reduced for slider)
         const baseScore = Math.floor(startHitValue / 3);
@@ -1260,7 +1284,7 @@ class OsuGame {
      */
     updateSliders(currentTime, circleRadius) {
         const osuPos = this.canvasToOsu(this.cursorX, this.cursorY);
-        const followRadius = circleRadius * 2.4; // Follow circle is larger than hit circle
+        const followRadius = circleRadius * (this.isTouchInputActive() ? 3.1 : 2.4);
 
         for (let i = this.activeObjects.length - 1; i >= 0; i--) {
             const obj = this.activeObjects[i];
@@ -1277,8 +1301,9 @@ class OsuGame {
             // Check if still tracking
             if (obj.tracking && !obj.trackingBroken) {
                 const distanceToBall = Math.hypot(osuPos.x - ballPos.x, osuPos.y - ballPos.y);
+                const inGracePeriod = currentTime <= (obj.trackingGraceEndTime || 0);
 
-                if (!this.isHoldingInput() || distanceToBall > followRadius) {
+                if (!this.isHoldingInput() || (!inGracePeriod && distanceToBall > followRadius)) {
                     // Lost tracking
                     obj.tracking = false;
                     obj.trackingBroken = true;

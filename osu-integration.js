@@ -226,42 +226,36 @@ function registerSongIdsMacro() {
             overlay.style.zIndex = '2147483000';
             overlay.style.display = 'flex';
             overlay.style.flexDirection = 'column';
-            overlay.style.background = 'rgba(2, 8, 16, 0.985)';
-
-            const overlayHeader = document.createElement('div');
-            overlayHeader.style.display = 'flex';
-            overlayHeader.style.alignItems = 'center';
-            overlayHeader.style.justifyContent = 'space-between';
-            overlayHeader.style.gap = '10px';
-            overlayHeader.style.padding = '10px 12px';
-            overlayHeader.style.borderBottom = '1px solid rgba(255, 255, 255, 0.14)';
-            overlayHeader.style.background = 'rgba(0, 0, 0, 0.24)';
-
-            const overlayTitle = document.createElement('span');
-            overlayTitle.textContent = 'osu!';
-            overlayTitle.style.color = '#f4f7ff';
-            overlayTitle.style.fontWeight = '700';
-            overlayHeader.appendChild(overlayTitle);
+            overlay.style.background = 'rgba(2, 8, 16, 0.995)';
 
             overlayCloseBtn = document.createElement('button');
             overlayCloseBtn.type = 'button';
-            overlayCloseBtn.textContent = 'Close';
+            overlayCloseBtn.textContent = '✕';
+            overlayCloseBtn.setAttribute('aria-label', 'Close osu game');
+            overlayCloseBtn.style.position = 'absolute';
+            overlayCloseBtn.style.top = 'max(8px, env(safe-area-inset-top))';
+            overlayCloseBtn.style.right = 'max(8px, env(safe-area-inset-right))';
+            overlayCloseBtn.style.zIndex = '2';
             overlayCloseBtn.style.border = '1px solid rgba(255, 255, 255, 0.26)';
             overlayCloseBtn.style.borderRadius = '999px';
-            overlayCloseBtn.style.padding = '6px 12px';
-            overlayCloseBtn.style.background = 'rgba(255, 255, 255, 0.1)';
+            overlayCloseBtn.style.width = '34px';
+            overlayCloseBtn.style.height = '34px';
+            overlayCloseBtn.style.padding = '0';
+            overlayCloseBtn.style.background = 'rgba(0, 0, 0, 0.36)';
             overlayCloseBtn.style.color = '#fff';
+            overlayCloseBtn.style.fontSize = '18px';
+            overlayCloseBtn.style.lineHeight = '1';
             overlayCloseBtn.style.fontWeight = '700';
             overlayCloseBtn.style.cursor = 'pointer';
-            overlayHeader.appendChild(overlayCloseBtn);
 
             overlayFrameHost = document.createElement('div');
             overlayFrameHost.style.flex = '1 1 auto';
             overlayFrameHost.style.minHeight = '0';
             overlayFrameHost.style.width = '100%';
+            overlayFrameHost.style.height = '100%';
 
-            overlay.appendChild(overlayHeader);
             overlay.appendChild(overlayFrameHost);
+            overlay.appendChild(overlayCloseBtn);
             document.body.appendChild(overlay);
             document.body.style.overflow = 'hidden';
         }
@@ -271,8 +265,7 @@ function registerSongIdsMacro() {
 
             let targetHeight;
             if (useFullscreenOverlay) {
-                const headerHeight = 56;
-                targetHeight = Math.max(260, Math.floor(viewportHeight - headerHeight));
+                targetHeight = Math.max(260, Math.floor(viewportHeight));
             } else {
                 const inlineWidth = Math.max(280, Math.floor(container.getBoundingClientRect().width || viewportWidth));
                 const aspectHeight = Math.round(inlineWidth * 0.75); // 4:3
