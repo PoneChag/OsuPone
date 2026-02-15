@@ -171,8 +171,10 @@ function registerSongIdsMacro() {
         messageText.textContent = '';
         const container = document.createElement('div');
         container.classList.add('flex-container','flexFlowColumn','flexGap10');
+        container.style.width = '100%';
         messageText.appendChild(container);
         const iframe = document.createElement('iframe');
+        const gameMessage = chatMessage;
 
         // Build URL with optional song parameter
         const gameUrl = new URL('./osu.html', import.meta.url);
@@ -191,23 +193,128 @@ function registerSongIdsMacro() {
         iframe.style.overflow='hidden';
         iframe.setAttribute('scrolling', 'no');
 
-        const updateIframeSize = () => {
+        const readViewportSize = () => {
             const viewport = window.visualViewport;
-            const viewportWidth = viewport?.width || window.innerWidth || 0;
-            const viewportHeight = viewport?.height || window.innerHeight || 0;
-            const isCompactViewport = Math.max(viewportWidth, viewportHeight) <= 1024 || Math.min(viewportWidth, viewportHeight) <= 768;
-            const isPortrait = viewportHeight >= viewportWidth;
+            return {
+                width: viewport?.width || window.innerWidth || 0,
+                height: viewport?.height || window.innerHeight || 0
+            };
+        };
 
-            let targetHeight = 600;
-            if (isCompactViewport) {
-                const viewportRatio = isPortrait ? 0.72 : 0.86;
-                targetHeight = Math.round(viewportHeight * viewportRatio);
+        const isCompactViewport = () => {
+            const { width, height } = readViewportSize();
+            return Math.max(width, height) <= 1200 || Math.min(width, height) <= 820;
+        };
+
+        const useFullscreenOverlay = isCompactViewport();
+        let overlay = null;
+        let overlayFrameHost = container;
+        let overlayCloseBtn = null;
+        const previousBodyOverflow = document.body.style.overflow;
+
+        if (useFullscreenOverlay) {
+            messageText.textContent = 'osu! running in fullscreen mode...';
+            messageText.style.opacity = '0.75';
+            messageText.style.fontSize = '0.9em';
+
+            overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.left = '0';
+            overlay.style.top = '0';
+            overlay.style.right = '0';
+            overlay.style.bottom = '0';
+            overlay.style.zIndex = '2147483000';
+            overlay.style.display = 'flex';
+            overlay.style.flexDirection = 'column';
+            overlay.style.background = 'rgba(2, 8, 16, 0.985)';
+
+            const overlayHeader = document.createElement('div');
+            overlayHeader.style.display = 'flex';
+            overlayHeader.style.alignItems = 'center';
+            overlayHeader.style.justifyContent = 'space-between';
+            overlayHeader.style.gap = '10px';
+            overlayHeader.style.padding = '10px 12px';
+            overlayHeader.style.borderBottom = '1px solid rgba(255, 255, 255, 0.14)';
+            overlayHeader.style.background = 'rgba(0, 0, 0, 0.24)';
+
+            const overlayTitle = document.createElement('span');
+            overlayTitle.textContent = 'osu!';
+            overlayTitle.style.color = '#f4f7ff';
+            overlayTitle.style.fontWeight = '700';
+            overlayHeader.appendChild(overlayTitle);
+
+            overlayCloseBtn = document.createElement('button');
+            overlayCloseBtn.type = 'button';
+            overlayCloseBtn.textContent = 'Close';
+            overlayCloseBtn.style.border = '1px solid rgba(255, 255, 255, 0.26)';
+            overlayCloseBtn.style.borderRadius = '999px';
+            overlayCloseBtn.style.padding = '6px 12px';
+            overlayCloseBtn.style.background = 'rgba(255, 255, 255, 0.1)';
+            overlayCloseBtn.style.color = '#fff';
+            overlayCloseBtn.style.fontWeight = '700';
+            overlayCloseBtn.style.cursor = 'pointer';
+            overlayHeader.appendChild(overlayCloseBtn);
+
+            overlayFrameHost = document.createElement('div');
+            overlayFrameHost.style.flex = '1 1 auto';
+            overlayFrameHost.style.minHeight = '0';
+            overlayFrameHost.style.width = '100%';
+
+            overlay.appendChild(overlayHeader);
+            overlay.appendChild(overlayFrameHost);
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+        }
+
+        const updateIframeSize = () => {
+            const { width: viewportWidth, height: viewportHeight } = readViewportSize();
+
+            let targetHeight;
+            if (useFullscreenOverlay) {
+                const headerHeight = 56;
+                targetHeight = Math.max(260, Math.floor(viewportHeight - headerHeight));
+            } else {
+                const inlineWidth = Math.max(280, Math.floor(container.getBoundingClientRect().width || viewportWidth));
+                const aspectHeight = Math.round(inlineWidth * 0.75); // 4:3
+                const maxHeight = Math.max(260, Math.floor(viewportHeight - 16));
+                targetHeight = Math.max(280, Math.min(aspectHeight, maxHeight));
             }
 
-            const maxHeight = Math.max(260, Math.floor(viewportHeight - 16));
-            targetHeight = Math.max(280, Math.min(targetHeight, maxHeight));
             iframe.style.height = `${targetHeight}px`;
-            iframe.style.maxHeight = `${maxHeight}px`;
+            iframe.style.maxHeight = `${targetHeight}px`;
+        };
+
+        const removeGameMessage = () => {
+            if (gameMessage && gameMessage.isConnected) {
+                gameMessage.remove();
+            }
+
+            const messageIndex = Array.isArray(context.chat)
+                ? context.chat.findIndex(msg => msg.mes === gameId)
+                : -1;
+            if (messageIndex !== -1) {
+                context.chat.splice(messageIndex, 1);
+            }
+        };
+
+        const cleanupPresentation = () => {
+            window.removeEventListener('resize', updateIframeSize);
+            if (window.visualViewport) {
+                window.visualViewport.removeEventListener('resize', updateIframeSize);
+            }
+            if (overlayCloseBtn) {
+                overlayCloseBtn.removeEventListener('click', handleOverlayClose);
+            }
+            if (overlay && overlay.isConnected) {
+                overlay.remove();
+            }
+            document.body.style.overflow = previousBodyOverflow;
+        };
+
+        function handleOverlayClose() {
+            window.removeEventListener('message', handleOsuMessage);
+            cleanupPresentation();
+            removeGameMessage();
         };
 
         updateIframeSize();
@@ -215,13 +322,13 @@ function registerSongIdsMacro() {
         if (window.visualViewport) {
             window.visualViewport.addEventListener('resize', updateIframeSize);
         }
-        container.appendChild(iframe);
+        if (overlayCloseBtn) {
+            overlayCloseBtn.addEventListener('click', handleOverlayClose);
+        }
+        overlayFrameHost.appendChild(iframe);
         chat.scrollTop = chat.scrollHeight;
 
         const expectedOrigin = gameUrl.origin;
-
-        // Store reference to the message element for removal later
-        const gameMessage = chatMessage;
 
         function handleOsuMessage(ev){
             if (ev.source !== iframe.contentWindow) return;
@@ -230,21 +337,8 @@ function registerSongIdsMacro() {
             if (ev.data.gameId !== gameId) return;
 
                 window.removeEventListener('message', handleOsuMessage);
-                window.removeEventListener('resize', updateIframeSize);
-                if (window.visualViewport) {
-                    window.visualViewport.removeEventListener('resize', updateIframeSize);
-                }
-
-                // Remove the game message from DOM
-                gameMessage.remove();
-
-                // Also remove it from the chat array
-                const messageIndex = Array.isArray(context.chat)
-                    ? context.chat.findIndex(msg => msg.mes === gameId)
-                    : -1;
-                if(messageIndex !== -1){
-                    context.chat.splice(messageIndex, 1);
-                }
+                cleanupPresentation();
+                removeGameMessage();
 
                 const data = ev.data.data || {};
                 const songInfo = `${data.songTitle} by ${data.songArtist}`;
