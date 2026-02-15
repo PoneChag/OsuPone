@@ -1908,26 +1908,30 @@ class OsuGame {
     }
 
     renderUI() {
+        const compactViewport = Math.max(this.gameWidth, this.gameHeight) <= 1200 || Math.min(this.gameWidth, this.gameHeight) <= 820;
+        const scoreFontSize = compactViewport ? 24 : 30;
+        const smallFontSize = compactViewport ? 15 : 18;
+
         // Score (top right)
         const scoreStr = String(Math.floor(this.stats.score)).padStart(8, '0');
-        this.renderScoreText(scoreStr, this.gameWidth - 20, 30, 'right');
+        this.renderScoreText(scoreStr, this.gameWidth - 20, 30, 'right', scoreFontSize);
 
         // Accuracy (below score)
         const accuracy = this.calculateAccuracy().toFixed(2) + '%';
-        this.renderSmallText(accuracy, this.gameWidth - 20, 60, 'right');
+        this.renderSmallText(accuracy, this.gameWidth - 20, 30 + scoreFontSize, 'right', smallFontSize);
 
         // Combo (bottom left)
         if (this.stats.combo > 0) {
             const comboStr = this.stats.combo + 'x';
-            this.renderScoreText(comboStr, 20, this.gameHeight - 30, 'left');
+            this.renderScoreText(comboStr, 20, this.gameHeight - 30, 'left', Math.max(22, scoreFontSize - 2));
         }
 
         // Health bar (top center)
         this.renderHealthBar();
     }
 
-    renderScoreText(text, x, y, align) {
-        this.ctx.font = '700 30px "Rajdhani", "Trebuchet MS", sans-serif';
+    renderScoreText(text, x, y, align, fontSize = 30) {
+        this.ctx.font = `700 ${fontSize}px "Rajdhani", "Trebuchet MS", sans-serif`;
         this.ctx.fillStyle = '#f6fbff';
         this.ctx.textAlign = align;
         this.ctx.textBaseline = 'middle';
@@ -1937,8 +1941,8 @@ class OsuGame {
         this.ctx.shadowBlur = 0;
     }
 
-    renderSmallText(text, x, y, align) {
-        this.ctx.font = '600 18px "Sora", "Trebuchet MS", sans-serif';
+    renderSmallText(text, x, y, align, fontSize = 18) {
+        this.ctx.font = `600 ${fontSize}px "Sora", "Trebuchet MS", sans-serif`;
         this.ctx.fillStyle = '#9ec0dc';
         this.ctx.textAlign = align;
         this.ctx.textBaseline = 'middle';
