@@ -424,10 +424,12 @@ class OsuGame {
     }
 
     calculatePlayfieldScale() {
-        // osu! playfield is 512x384, we need to fit it in the canvas with padding
-        const padding = 50;
-        const availableWidth = this.gameWidth - padding * 2;
-        const availableHeight = this.gameHeight - padding * 2;
+        // osu! playfield is 512x384. Use adaptive padding so mobile screens
+        // don't lose too much playable area to fixed margins.
+        const minDimension = Math.max(1, Math.min(this.gameWidth, this.gameHeight));
+        const padding = Math.max(10, Math.min(50, Math.round(minDimension * 0.06)));
+        const availableWidth = Math.max(1, this.gameWidth - padding * 2);
+        const availableHeight = Math.max(1, this.gameHeight - padding * 2);
 
         const scaleX = availableWidth / OSU_PLAYFIELD.width;
         const scaleY = availableHeight / OSU_PLAYFIELD.height;

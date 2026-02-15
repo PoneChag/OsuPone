@@ -185,7 +185,36 @@ function registerSongIdsMacro() {
 
         iframe.style.border='0';
         iframe.classList.add('wide100p');
-        iframe.style.height='600px';
+        iframe.style.display='block';
+        iframe.style.width='100%';
+        iframe.style.maxWidth='100%';
+        iframe.style.overflow='hidden';
+        iframe.setAttribute('scrolling', 'no');
+
+        const updateIframeSize = () => {
+            const viewport = window.visualViewport;
+            const viewportWidth = viewport?.width || window.innerWidth || 0;
+            const viewportHeight = viewport?.height || window.innerHeight || 0;
+            const isCompactViewport = Math.max(viewportWidth, viewportHeight) <= 1024 || Math.min(viewportWidth, viewportHeight) <= 768;
+            const isPortrait = viewportHeight >= viewportWidth;
+
+            let targetHeight = 600;
+            if (isCompactViewport) {
+                const viewportRatio = isPortrait ? 0.72 : 0.86;
+                targetHeight = Math.round(viewportHeight * viewportRatio);
+            }
+
+            const maxHeight = Math.max(260, Math.floor(viewportHeight - 16));
+            targetHeight = Math.max(280, Math.min(targetHeight, maxHeight));
+            iframe.style.height = `${targetHeight}px`;
+            iframe.style.maxHeight = `${maxHeight}px`;
+        };
+
+        updateIframeSize();
+        window.addEventListener('resize', updateIframeSize);
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', updateIframeSize);
+        }
         container.appendChild(iframe);
         chat.scrollTop = chat.scrollHeight;
 
@@ -201,6 +230,10 @@ function registerSongIdsMacro() {
             if (ev.data.gameId !== gameId) return;
 
                 window.removeEventListener('message', handleOsuMessage);
+                window.removeEventListener('resize', updateIframeSize);
+                if (window.visualViewport) {
+                    window.visualViewport.removeEventListener('resize', updateIframeSize);
+                }
 
                 // Remove the game message from DOM
                 gameMessage.remove();
